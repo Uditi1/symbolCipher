@@ -22,7 +22,7 @@
 
 above step that is 1 step is generic step 2 step is continue in backend and frontend folders
 
-   ### backend
+### backend
 
 2. cd to  backend folder
     ```bash
@@ -48,7 +48,7 @@ above step that is 1 step is generic step 2 step is continue in backend and fron
    npm test
    ```
 
-    ### frontend
+### frontend
 
 2. cd to  frontend folder
     ```bash
@@ -60,7 +60,7 @@ above step that is 1 step is generic step 2 step is continue in backend and fron
    npm install
    ```
 
-4. 4. After it run one more command npm run dev
+4. After it run one more command npm run dev
 
    ```bash
    npm run dev
