@@ -23,21 +23,26 @@ function encode(text) {
   }).join('');
 }
 
+function isPossiblyEncodedSymbol(char) {
+  
+  return /[^\x00-\x7F]/.test(char) && !/[\p{Emoji}]/u.test(char);
+}
+
 function decode(encoded) {
   if ([...encoded].length > 280) throw { code: 'INPUT_TOO_LONG' };
   if (containsUnsupportedControlChar(encoded)) throw { code: 'UNSUPPORTED_CONTROL_CHAR' };
 
   return [...encoded].map(char => {
     if (char in decodeMap) return decodeMap[char];
-    if (/[A-Za-z]/.test(char)) return char;     
-    if (char === '\n') return '\n';            
-    if (char === ' ') return ' '; 
-     if (/[.,!?'"\-()]/.test(char)) return char;                  
-   
+    if (/[A-Za-z]/.test(char)) return char;
+    if (/\s/.test(char)) return char; 
+    if (!isPossiblyEncodedSymbol(char)) return char;
 
-    throw { code: 'UNKNOWN_SYMBOL' };            
+  
+    throw { code: 'UNKNOWN_SYMBOL' };
   }).join('');
 }
+
 
 
 
