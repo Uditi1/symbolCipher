@@ -1,5 +1,12 @@
 const { encode, decode } = require('../encodeDecode');
 
+function encodeText(text) {
+    return encode(text); 
+}
+
+function decodeText(encoded) {
+    return decode(encoded); 
+}
 
 function encodeController(req, res) {
     console.log('here')
@@ -25,4 +32,4 @@ function decodeController(req, res) {
     }
 }
 
-module.exports = {encodeController, decodeController}
+module.exports = {encodeController, decodeController, encodeText, decodeText}

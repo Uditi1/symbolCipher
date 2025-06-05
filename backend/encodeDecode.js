@@ -12,7 +12,15 @@ function encode(text) {
   if ([...text].length > 280) throw { code: 'INPUT_TOO_LONG' };
   if (containsUnsupportedControlChar(text)) throw { code: 'UNSUPPORTED_CONTROL_CHAR' };
 
-  return [...text].map(char => encodeMap[char] || char).join('');
+  return [...text].map(char => {
+    if (char >= 'a' && char <= 'z') {
+      
+      if (!(char in encodeMap)) throw { code: 'UNKNOWN_SYMBOL' };
+      return encodeMap[char];
+    } 
+    
+    return char;
+  }).join('');
 }
 
 function decode(encoded) {
@@ -21,11 +29,17 @@ function decode(encoded) {
 
   return [...encoded].map(char => {
     if (char in decodeMap) return decodeMap[char];
-    if (/[A-Za-z]/.test(char)) return char;
-    if (char === '\n') return '\n';
-    throw { code: 'UNKNOWN_SYMBOL' };
+    if (/[A-Za-z]/.test(char)) return char;     
+    if (char === '\n') return '\n';            
+    if (char === ' ') return ' '; 
+     if (/[.,!?'"\-()]/.test(char)) return char;                  
+   
+
+    throw { code: 'UNKNOWN_SYMBOL' };            
   }).join('');
 }
+
+
 
 
 
