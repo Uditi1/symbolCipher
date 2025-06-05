@@ -35,10 +35,10 @@ function decode(encoded) {
   return [...encoded].map(char => {
     if (char in decodeMap) return decodeMap[char];
     if (/[A-Za-z]/.test(char)) return char;
-    if (/\s/.test(char)) return char; // spaces, tabs, newlines
+    if (/\s/.test(char)) return char; 
     if (!isPossiblyEncodedSymbol(char)) return char;
 
-    // If it reaches here, it's an unknown symbol that *looks* like it should be decoded
+  
     throw { code: 'UNKNOWN_SYMBOL' };
   }).join('');
 }
