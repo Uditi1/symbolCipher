@@ -1,9 +1,11 @@
-const { encode, decode } = require('./encodeDecode');
+const { encode, decode } = require('../encodeDecode');
 
 
 function encodeController(req, res) {
+    console.log('here')
     try {
-        const {text} = req.body();
+        const {text} = req.body;
+        console.log("ew", text)
           const encoded = encode(text);
     res.json({ encoded });
 
