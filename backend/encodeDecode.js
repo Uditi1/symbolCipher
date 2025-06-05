@@ -1,3 +1,5 @@
+const { encodeMap, decodeMap } = require('./symbolMap');
+
 function containsUnsupportedControlChar(text) {
   return [...text].some(char => {
     const code = char.charCodeAt(0);
