@@ -25,7 +25,7 @@ above step that is 1 step is generic step 2 step is continue in backend and fron
    ### backend
 
 2. cd to  backend folder
-```bash
+    ```bash
    cd backend
    ```
 
@@ -44,15 +44,14 @@ above step that is 1 step is generic step 2 step is continue in backend and fron
 
 6. For testing run command npm test
 
-```bash
+    ```bash
    npm test
    ```
-
 
     ### frontend
 
 2. cd to  frontend folder
-```bash
+    ```bash
    cd frontend
    ```
 
